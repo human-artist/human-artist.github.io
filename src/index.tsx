@@ -1,19 +1,27 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+// pages/index.tsx
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+import { GetStaticProps } from 'next';
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+type Props = {
+  message: string;
+};
+
+const HomePage: React.FC<Props> = ({ message }) => {
+  return (
+    <div>
+      <h1>Home Page</h1>
+      <p>{message}</p>
+    </div>
+  );
+};
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  // Simulate fetching data from an API
+  const data = { message: 'This is a statically generated page!' };
+
+  return {
+    props: data,
+  };
+};
+
+export default HomePage;
