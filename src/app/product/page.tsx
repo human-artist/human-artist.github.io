@@ -1,8 +1,17 @@
 //import ProductLayout from './layout';
+import { Metadata } from "next";
+
 export async function generateStaticParams() {
   return [{params:{}}]
 }
+
+export const metadata: Metadata = {
+  title: "SOKO",
+  description: "Milo",
+};
+
 export default function ProductIndexPage() {
+  console.log("I am in product page")
   return (
     <>
      
